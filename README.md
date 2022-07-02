@@ -1,7 +1,6 @@
 # film-list
 
-## See Demo
-See [Demo](https://filmlistproject.netlify.app).
+[Demo](https://filmlistproject.netlify.app).
 
 ## Project setup
 ```
