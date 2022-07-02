@@ -7,32 +7,38 @@
           <div class="form-row">
             <div class="form-group col-md-6">
               <input
-              v-model="filmİsmi"
+                v-model="film.filmName"
                 class="form-control"
                 type="text"
                 name="title"
                 id="title"
                 placeholder="Film İsmi"
+                autocomplete="off"
+                required
               />
             </div>
             <div class="form-group col-md-6">
               <input
-              v-model="yonetmen"
+                v-model="film.yonetmen"
                 class="form-control"
                 type="text"
                 name="director"
                 id="director"
                 placeholder="Yönetmen"
+                autocomplete="off"
+                required
               />
             </div>
             <div class="form-group col-md-6">
               <input
-              v-model="link"
+                autocomplete="off"
+                v-model="film.link"
                 class="form-control"
                 type="text"
                 name="url"
                 id="url"
                 placeholder="Film Afiş Linki"
+                required
               />
             </div>
           </div>
@@ -40,53 +46,27 @@
         </form>
         <hr />
       </div>
-
-      <div class="card-body">
-        <hr />
-        <h5 class="card-title" id="films-title">Filmler</h5>
-
-        <hr />
-        <table class="table table-dark">
-          <thead>
-            <tr>
-              <th scope="col">Film Afişi</th>
-              <th scope="col">Film İsmi</th>
-              <th scope="col">Yönetmen</th>
-            </tr>
-          </thead>
-          <tbody v-for="film in filmList" :key="film.filmİsmi" id="films">
-            <tr>
-              <img :src="link">
-              <td scope="col">{{filmİsmi}}</td>
-              <td scope="col">{{yonetmen}}</td>
-            </tr>
-          </tbody>
-        </table>
-        <hr />
-        <a id="clear-films" class="btn btn-dark" href="#"
-          >Tüm Filmleri Temizleyin</a
-        >
-      </div>
     </div>
   </div>
 </template>
 <script>
 export default {
-    name: 'FilmList',
-    data(){
-        return{
-            filmİsmi:"",
-            yonetmen:"",
-            link:"",
-            filmList:[]
-        }
+  name: "AddFilm",
+  data() {
+    return {
+      film: {
+        filmName: "",
+        yonetmen: "",
+        link: "",
+        id:""
+      },
+    };
+  },
+  methods: {
+    filmiEkle() {
+        this.$emit("add:film",this.film)
     },
-    methods:{
-        filmiEkle(){
-      const film = { filmİsmi: this.filmİsmi, yonetmen: this.yonetmen, link: this.link };
-      this.filmList.push(film)
-        }
-    }
+  },
 };
 </script>
 <style scoped>

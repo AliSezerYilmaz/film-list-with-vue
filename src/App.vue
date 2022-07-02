@@ -1,15 +1,45 @@
 <template>
-<FilmList/>
+  <div>
+    <AddFilm @add:film="addFilm" />
+    <FilmListe :films="films" @deleteAll="deleteAllFilms" @deleteFilm:film="deleteFilm"/>
+  </div>
 </template>
 
 <script>
-import FilmList from './components/FilmList.vue'
+import AddFilm from "./components/AddFilm.vue";
+import FilmListe from "./components/FilmListe.vue";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    FilmList
-  }
-}
+    AddFilm,
+    FilmListe,
+  },
+  data() {
+    return {
+      films: [],
+    };
+  },
+  methods: {
+    addFilm(film) {
+      const newFilm = {
+        yonetmen: film.yonetmen,
+        link: film.link,
+        filmName: film.filmName,
+      };
+      this.films.push(newFilm);
+    },
+    deleteAllFilms() {
+      this.films.length=0
+    },
+    deleteFilm(film){
+      for(let i=0;i<this.films.length;i++){
+        if(this.films[i]===film){
+          this.films.splice(i,1)
+        }
+      }
+    }
+  },
+};
 </script>
 
 <style>
