@@ -1,6 +1,6 @@
 # film-list
 
-[Demo](https://filmlistproject.netlify.app).
+[Demo](https://filmlistproject.netlify.app)
 
 ## Project setup
 ```
