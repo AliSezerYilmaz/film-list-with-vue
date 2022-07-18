@@ -65,6 +65,7 @@ export default {
   methods: {
     filmiEkle() {
         this.$emit("add:film",this.film)
+        
     },
   },
 };
