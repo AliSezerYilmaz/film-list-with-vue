@@ -40,7 +40,7 @@
           </td>
           <td v-else scope="col">{{ film.yonetmen }}</td>
           <td v-if="updateId!==film.id">
-            <button class="btn btn-primary" @click="handleUpdate(film)">
+            <button class="guncelle btn btn-primary" @click="handleUpdate(film)">
               Güncelle
             </button>
             <button
@@ -52,7 +52,7 @@
             </button>
           </td>
           <td v-else>
-            <button class="btn btn-primary" @click="handleSave(film)">
+            <button class="guncelle btn btn-primary" @click="handleSave(film)">
               Kaydet
             </button>
             <button
@@ -106,5 +106,8 @@ img {
 }
 td {
   font-size: 130%;
+}
+.guncelle{
+  margin-right: 2%;
 }
 </style>
