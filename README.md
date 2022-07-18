@@ -1,5 +1,7 @@
 # film-list
 
+[Demo](https://filmlistproject.netlify.app)
+
 ## Project setup
 ```
 npm install
