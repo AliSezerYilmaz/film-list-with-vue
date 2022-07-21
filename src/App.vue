@@ -1,7 +1,13 @@
 <template>
   <div>
     <AddFilm @add:film="addFilm" />
-    <FilmListe :films="films" @deleteAll="deleteAllFilms" @deleteFilm:film="deleteFilm" @update:film="updateFilm"/>
+    <FilmListe
+      :films="films"
+      @deleteAll="deleteAllFilms"
+      @deleteFilm:film="deleteFilm"
+      @update:film="updateFilm"
+      @deleteUpdateFilm:film="deleteUpdate"
+    />
   </div>
 </template>
 
@@ -54,6 +60,17 @@ export default {
       }
     }
   },
+  deleteUpdate(film){
+      for(let i=0;i<this.films.length;i++){
+        if(this.films[i]===film){
+          film.link=this.films.link
+          film.filmName=this.films.filmName
+          film.yonetmen=this.films.yonetmen
+        }
+      }
+      this.addFilm(film)
+
+  }
 };
 </script>
 

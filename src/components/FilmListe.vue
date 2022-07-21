@@ -14,24 +14,26 @@
       </thead>
       <tbody v-for="film in films" :key="film.id">
         <tr>
-          <td v-if="updateId===film.id">
-          <input
+          <td v-if="updateId === film.id">
+            <input
               type="text"
               v-model="film.link"
               class="form-control"
               id="link"
             />
-            </td>
+          </td>
           <td v-else><img :src="film.link" /></td>
-          <td  v-if="updateId===film.id"><input
+          <td v-if="updateId === film.id">
+            <input
               type="text"
               v-model="film.filmName"
               class="form-control"
               id="filmName"
-            /></td>
+            />
+          </td>
           <td v-else scope="col">{{ film.filmName }}</td>
-          <td v-if="updateId===film.id">
-          <input
+          <td v-if="updateId === film.id">
+            <input
               type="text"
               v-model="film.yonetmen"
               class="form-control"
@@ -39,8 +41,11 @@
             />
           </td>
           <td v-else scope="col">{{ film.yonetmen }}</td>
-          <td v-if="updateId!==film.id">
-            <button class="guncelle btn btn-primary" @click="handleUpdate(film)">
+          <td v-if="updateId !== film.id">
+            <button
+              class="guncelle btn btn-primary"
+              @click="handleUpdate(film)"
+            >
               Güncelle
             </button>
             <button
@@ -56,14 +61,13 @@
               Kaydet
             </button>
             <button
-              @click="deleteUpdate()"
+              @click="deleteUpdate(film)"
               id="delete-film"
               class="btn btn-danger"
             >
               İptal Et
             </button>
           </td>
-          
         </tr>
       </tbody>
     </table>
@@ -79,8 +83,8 @@ export default {
   props: {
     films: Array,
   },
-  data(){
-    return{ updateId:null};
+  data() {
+    return { updateId: null };
   },
   methods: {
     deleteFilms() {
@@ -90,17 +94,18 @@ export default {
       this.$emit("deleteFilm:film", film);
     },
     handleUpdate(film) {
-      this.updateId=film.id
+      this.updateId = film.id;
     },
-    handleSave(film){
-      this.$emit("update:film",film);
-      this.updateId=null;
+    handleSave(film) {
+      this.$emit("update:film", film);
+      this.updateId = null;
     },
-    
-    deleteUpdate(){
-      this.updateId=null;
 
-    }
+    deleteUpdate(film) {
+      this.$emit("deleteUpdateFilm:film", film);
+
+      this.updateId = null;
+    },
   },
 };
 </script>
@@ -112,7 +117,7 @@ img {
 td {
   font-size: 130%;
 }
-.guncelle{
+.guncelle {
   margin-right: 2%;
 }
 </style>
