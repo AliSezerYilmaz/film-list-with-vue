@@ -56,7 +56,7 @@
               Kaydet
             </button>
             <button
-              @click="updateId=null"
+              @click="deleteUpdate()"
               id="delete-film"
               class="btn btn-danger"
             >
@@ -95,6 +95,11 @@ export default {
     handleSave(film){
       this.$emit("update:film",film);
       this.updateId=null;
+    },
+    
+    deleteUpdate(){
+      this.updateId=null;
+
     }
   },
 };

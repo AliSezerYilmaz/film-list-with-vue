@@ -21,11 +21,14 @@ export default {
   },
   methods: {
     addFilm(film) {
+      
+        const a=Math.random() * 100;
+        
       const newFilm = {
         yonetmen: film.yonetmen,
         link: film.link,
         filmName: film.filmName,
-        id:this.films.length+1
+        id:a
       };
       
       console.log(newFilm.id)
